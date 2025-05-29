@@ -1,0 +1,264 @@
+8:fsListA-SLocationfsListS@BlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ª-SGroupC-SHeaderIDS0lhpx9-SIDiLÔè:-SStringS≈BlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ª
+paclet:ref/BlockchainAddressData#982511436
+
+BlockchainAddressData["address"]  gives available information connected with the specified address on the default blockchain.
+
+BlockchainAddressData[assoc] gives available information connected with properties matching the specification in assoc.
+
+BlockchainAddressData[addressSpec, prop] gives the specified property of the blockchain address.-SURIS*paclet:ref/BlockchainAddressData#982511436-S
+DeprecatedsFalse-S
+TokenCountCSA-SLocationfsListS@BlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ªSDetails and Options-SGroupC-SHeaderIDi§æB-SIDiÈﬁÍ*-SStringSñBlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ª > Details and Options
+paclet:ref/BlockchainAddressData#720035561
+
+* The blockchain ``address`` can be specified as follows:
+
+|                                  |                                                |
+| -------------------------------- | ---------------------------------------------- |
+| "address"                        | address on the default blockchain              |
+| "chain" -> "address"              | address on the specified public blockchain     |
+| {"chain", "network"} -> "address" | address on a specific network for a blockchain |
+
+* The ``addressSpec`` input refers to any input, whether it is a [String](paclet:ref/String) ``address`` or an [Association](paclet:ref/Association) ``assoc``.
+
+* The option [BlockchainBase](paclet:ref/BlockchainBase) can be used to specify the blockchain to use. The default setting is [\$BlockchainBase](paclet:ref/$BlockchainBase). If [\$BlockchainBase](paclet:ref/$BlockchainBase) is [Automatic](paclet:ref/Automatic), [BlockchainBase](paclet:ref/BlockchainBase) is taken to be ``"Ethereum"``.
+
+* Possible options include:
+
+|                 |           |                                     |
+| --------------- | --------- | ----------------------------------- |
+| BlockchainBase  | Automatic | sets the blockchain and its network |
+| MaxItems        | 20        | number of transactions to return    |-SURIS*paclet:ref/BlockchainAddressData#720035561-S
+DeprecatedsFalse-S
+TokenCountj%A-SLocationfsListS@BlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ªSExamplesSBasic Examples-SGroupC-SHeaderIDiRvú`-SIDi´ƒ◊C-SStringS©BlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ª > Examples > Basic Examples
+paclet:ref/BlockchainAddressData#1138214059
+
+Get information about an Ethereum address on the main network:
+
+```wl
+In[1]:= BlockchainAddressData["304a554a310C7e546dfe434669C62820b7D83490"]//Dataset
+
+Out[1]=
+Dataset[Association["Address" -> "304a554a310C7e546dfe434669C62820b7D83490", 
+  "Balance" -> Quantity[7, "Wei"], "ValueInUSDollars" -> Quantity[1.0098406829833983*^-15, 
+    "USDollars"], "TransactionCount" -> 3, "TotalTransactions" -> 30, 
+  "TotalI ... 3a497ae0", 
+       "0000000000000000000000000000000000000000000000000000000000000003", 
+       "000000000000000000000000e3a7bdea3a61ae3d797110167da92d14120fdd7a"}, 
+     "Data" -> "0000000000000000000000000000000000000000000000000000000000000001"]}]]
+```-SURIS+paclet:ref/BlockchainAddressData#1138214059-S
+DeprecatedsFalse-S
+TokenCountjA-SLocationfsListS@BlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ªSExamplesSBasic Examples-SGroupC-SHeaderIDi æÓ2-SIDi°ﬁì#-SStringS¡BlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ª > Examples > Basic Examples > 2
+paclet:ref/BlockchainAddressData#596893345
+
+Get information about a regular address from the ARK blockchain:
+
+```wl
+In[1]:= BlockchainAddressData["AKphwrHjHxFUok7vuNyLqQhyfGgNcWszGP", BlockchainBase -> "ARK"]//Dataset
+
+Out[1]=
+Dataset[Association["Address" -> "AKphwrHjHxFUok7vuNyLqQhyfGgNcWszGP", 
+  "Username" -> Missing["NotAvailable"], "PublicKey" -> 
+   PublicKey[Association["Type" -> "EllipticCurve", "CurveName" -> "secp256k1", 
+     "Compressed" -> True, "PublicByteAr ... nt" -> "AKphwrHjHxFUok7vuNyLqQhyfGgNcWszGP", 
+     "Amount" -> Quantity[248121, "ARKtoshis"], "Fee" -> Quantity[10000000, "ARKtoshis"], 
+     "Type" -> "Transfer", "VendorField" -> Missing["NotAvailable"], 
+     "Asset" -> Missing["NotAvailable"]]}]]
+```-SURIS*paclet:ref/BlockchainAddressData#596893345-S
+DeprecatedsFalse-S
+TokenCountjA-SLocationfsListS@BlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ªSExamplesSBasic Examples-SGroupC-SHeaderIDiﬁ“ﬁ-SIDid"Ã"-SStringSƒBlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ª > Examples > Basic Examples > 3
+paclet:ref/BlockchainAddressData#583803492
+
+Get information about a user address from the Tezos blockchain:
+
+```wl
+In[1]:= BlockchainAddressData["tz1e516PCHxgTQF15vkDVfkhsmf1zFCzcEr9", BlockchainBase -> "Tezos"]//Dataset
+
+Out[1]=
+Dataset[Association["Address" -> "tz1e516PCHxgTQF15vkDVfkhsmf1zFCzcEr9", "Type" -> "User", 
+  "FirstBlockNumber" -> 1110524, "LastBlockNumber" -> 1110528, "Balance" -> Quantity[1, "Mutez"], 
+  "ContractsCount" -> 0, "MigrationsCount" -> 0, "Staked" - ... D" -> "opFUddqBmyQUBsfcsQfCc2bthf97mp2yHpVt652C5ynV9hqtdGw", 
+     "Sender" -> "tz1LnHsA2wpn7guf8b7xzX2i5zNKRQoRQVgJ", 
+     "Target" -> "tz1e516PCHxgTQF15vkDVfkhsmf1zFCzcEr9", "Amount" -> Quantity[200000000, "Mutez"], 
+     "Status" -> "Applied"]}]]
+```-SURIS*paclet:ref/BlockchainAddressData#583803492-S
+DeprecatedsFalse-S
+TokenCountjOA-SLocationfsListS@BlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ªSExamplesSBasic Examples-SGroupC-SHeaderIDiÍƒÈ/-SIDirÈ-SStringSéBlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ª > Examples > Basic Examples > 4
+paclet:ref/BlockchainAddressData#468283908
+
+Get information about a payment address from the Cardano blockchain:
+
+```wl
+In[1]:= BlockchainAddressData["addr1qx9wpgszhgg56n5wh8u2dmt5qxe47hvlcwnm27qjsshnp8vln7wc84w9kzz0mv4juty0k3k0fp9ust99hapyuj6qlvdss9nyan", BlockchainBase -> "Cardano"]//Dataset
+
+Out[1]=
+Dataset[Association["Address" -> "addr1qx9wpgszhgg56n5wh8u2dmt5qxe47hvlcwnm27qjsshnp8vln7wc84w9kzz0\
+mv4juty0k3k0fp9ust99hapyuj6qlvdss9nyan", "Balance" -> Quantity[21822202, "CardanoLovelace"], 
+  "BalanceInUSDollars" -> Quantity[43.18001603863287, " ...  
+  "StakeAddress" -> "stake1ux0el8vr6hzmpp8ak2ew9j8mgm85sj7g9jjm7sjwfdq0kxc57yqxa", 
+  "TotalWithdrawn" -> Quantity[0, "CardanoLovelace"], "TotalWithdrawnInUSDollars" -> 
+   Quantity[0, "USDollars"], "TotalWithdrawals" -> 0, "WithdrawalList" -> {}]]
+```-SURIS*paclet:ref/BlockchainAddressData#468283908-S
+DeprecatedsFalse-S
+TokenCountjiA-SLocationfsListS@BlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ªSExamplesSBasic Examples-SGroupC-SHeaderIDiá=Ú-SIDiZ(F-SStringS™BlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ª > Examples > Basic Examples > 5
+paclet:ref/BlockchainAddressData#1177033562
+
+Specify the blockchain in the first argument:
+
+```wl
+In[1]:= BlockchainAddressData["Ethereum" -> "304a554a310C7e546dfe434669C62820b7D83490"]//Dataset
+
+Out[1]=
+Dataset[Association["Address" -> "304a554a310C7e546dfe434669C62820b7D83490", 
+  "Balance" -> Quantity[7, "Wei"], "ValueInUSDollars" -> Quantity[1.0098406829833983*^-15, 
+    "USDollars"], "TransactionCount" -> 3, "TotalTransactions" -> 30, 
+  "TotalI ... 3a497ae0", 
+       "0000000000000000000000000000000000000000000000000000000000000003", 
+       "000000000000000000000000e3a7bdea3a61ae3d797110167da92d14120fdd7a"}, 
+     "Data" -> "0000000000000000000000000000000000000000000000000000000000000001"]}]]
+```-SURIS+paclet:ref/BlockchainAddressData#1177033562-S
+DeprecatedsFalse-S
+TokenCountjA-SLocationfsListS@BlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ªSExamplesSBasic Examples-SGroupC-SHeaderIDidyb#-SIDiÑ<–E-SStringS∑BlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ª > Examples > Basic Examples > 6
+paclet:ref/BlockchainAddressData#1171274884
+
+Specify the blockchain and network in the first argument:
+
+```wl
+In[1]:= BlockchainAddressData[{"ARK", "Devnet"} -> "DSyG9hK9CE8eyfddUoEvsga4kNVQLdw2ve"]//Dataset
+
+Out[1]=
+Dataset[Association["Address" -> "DSyG9hK9CE8eyfddUoEvsga4kNVQLdw2ve", "Username" -> "alessio", 
+  "PublicKey" -> PublicKey[Association["Type" -> "EllipticCurve", "CurveName" -> "secp256k1", 
+     "Compressed" -> True, "PublicByteArray" -> ByteArray[ ...  
+   Association["Approval" -> Quantity[16.01, "Percent"]], 
+  "Forged" -> Association["Fees" -> Quantity[468584518039, "DARKtoshis"], 
+    "Rewards" -> Quantity[17307800000000, "DARKtoshis"], 
+    "Total" -> Quantity[17776384518039, "DARKtoshis"]]]]
+```-SURIS+paclet:ref/BlockchainAddressData#1171274884-S
+DeprecatedsFalse-S
+TokenCountjA-SLocationfsListS@BlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ªSExamplesSBasic Examples-SGroupC-SHeaderIDiÚÕE-SIDi_ä?--SStringS∏BlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ª > Examples > Basic Examples > 7
+paclet:ref/BlockchainAddressData#759138911
+
+Get the balance of a specific Ethereum address:
+
+```wl
+In[1]:= BlockchainAddressData["304a554a310C7e546dfe434669C62820b7D83490", "Balance"]
+
+Out[1]= Quantity[7, "Wei"]
+```-SURIS*paclet:ref/BlockchainAddressData#759138911-S
+DeprecatedsFalse-S
+TokenCountC\A-SLocationfsListS@BlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ªSExamplesSBasic Examples-SGroupC-SHeaderIDi˘q]-SIDiw»N-SStringS∑BlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ª > Examples > Basic Examples > 8
+paclet:ref/BlockchainAddressData#307153015
+
+Get the username of an ARK address:
+
+```wl
+In[1]:= BlockchainAddressData["AZzmCRP3Us7q4Pbyu3qCr2Dwq8vvuseLKa", "Username", BlockchainBase -> "ARK"]
+
+Out[1]= "pieface"
+```-SURIS*paclet:ref/BlockchainAddressData#307153015-S
+DeprecatedsFalse-S
+TokenCountCbA-SLocationfsListS@BlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ªSExamplesSBasic Examples-SGroupC	-SHeaderIDiœ°˛-SIDiàÌ
+c-SStringSîBlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ª > Examples > Basic Examples > 9
+paclet:ref/BlockchainAddressData#1661660552
+
+Get multiple properties from a bloxberg address:
+
+```wl
+In[1]:= BlockchainAddressData["737756B173D2F41D63a46Ed6094DAF7E8a78F997", {"Balance", "Type"}, BlockchainBase -> "Bloxberg"]
+
+Out[1]= {Quantity[10027563166450905420, "brox"], "Externally Owned Account"}
+```-SURIS+paclet:ref/BlockchainAddressData#1661660552-S
+DeprecatedsFalse-S
+TokenCountCzA-SLocationfsListS@BlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ªSExamplesSOptionsSBlockchainBase-SGroupC-SHeaderIDi6Äk%-SIDi•CKS-SStringS≈BlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ª > Examples > Options > BlockchainBase
+paclet:ref/BlockchainAddressData#1397441445
+
+Check a Bitcoin address on the main network:
+
+```wl
+In[1]:= BlockchainAddressData["3KfRwBSLzeGcZ76SHog2m9Kkhnb6N8dzSc", BlockchainBase -> {"Bitcoin", "Mainnet"}]//Dataset
+
+Out[1]=
+Dataset[Association["Address" -> "3KfRwBSLzeGcZ76SHog2m9Kkhnb6N8dzSc", 
+  "Balance" -> Quantity[63.53583568, "Bitcoins"], "ValueInUSDollars" -> 
+   Quantity[458469.93676329014, "USDollars"], "TotalTransactions" -> 204, 
+  "TransactionList" -> {Associ ... y[0., "Bitcoins"]]}, "Outputs" -> 
+      {Association["Addresses" -> {"3KfRwBSLzeGcZ76SHog2m9Kkhnb6N8dzSc"}, 
+        "Amount" -> Quantity[12.86940063, "Bitcoins"]], Association["Addresses" -> Null, 
+        "Amount" -> Quantity[0., "Bitcoins"]]}]}]]
+```-SURIS+paclet:ref/BlockchainAddressData#1397441445-S
+DeprecatedsFalse-S
+TokenCountjA-SLocationfsListS@BlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ªSExamplesSOptionsSBlockchainBase-SGroupC-SHeaderIDi
+à3-SIDi¥ú„n-SStringSØBlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ª > Examples > Options > BlockchainBase > 2
+paclet:ref/BlockchainAddressData#1860410548
+
+Get information from a delegate in the ARK devnet:
+
+```wl
+In[1]:= BlockchainAddressData["alessio", BlockchainBase -> {"ARK", "Devnet"}]//Dataset
+
+Out[1]=
+Dataset[Association["Address" -> "DSyG9hK9CE8eyfddUoEvsga4kNVQLdw2ve", "Username" -> "alessio", 
+  "PublicKey" -> PublicKey[Association["Type" -> "EllipticCurve", "CurveName" -> "secp256k1", 
+     "Compressed" -> True, "PublicByteArray" -> ByteArray[ ...  
+   Association["Approval" -> Quantity[16.01, "Percent"]], 
+  "Forged" -> Association["Fees" -> Quantity[468584518039, "DARKtoshis"], 
+    "Rewards" -> Quantity[17307800000000, "DARKtoshis"], 
+    "Total" -> Quantity[17776384518039, "DARKtoshis"]]]]
+```-SURIS+paclet:ref/BlockchainAddressData#1860410548-S
+DeprecatedsFalse-S
+TokenCountjA-SLocationfsListS@BlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ªSExamplesSOptionsSBlockchainBase-SGroupC-SHeaderIDiõ+-SIDi; {'-SStringS—BlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ª > Examples > Options > BlockchainBase > 3
+paclet:ref/BlockchainAddressData#662380603
+
+Get information from a delegate in the Tezos testnet:
+
+```wl
+In[1]:= BlockchainAddressData["tz1YeQkgxvzVroTyMh72DrmNRsyzQfsBmxt8", BlockchainBase -> {"Tezos", "Testnet"}]//Dataset
+
+Out[1]=
+Dataset[Association["Address" -> "tz1YeQkgxvzVroTyMh72DrmNRsyzQfsBmxt8", "Type" -> "Delegate", 
+  "FirstBlockNumber" -> 356556, "LastBlockNumber" -> 356594, 
+  "Balance" -> Quantity[99922984, "Mutez"], "ContractsCount" -> 1, "MigrationsCount" -> 0, 
+ ... D" -> "oovNDyst8eRJ1UbZ8WvtqMLm8yY9DjroAzgMj5AcZb6vru5v7VN", 
+     "Sender" -> "tz1Sroy5n7EoS98zuupAVUmzbLVun6KnHNao", 
+     "Target" -> "tz1YeQkgxvzVroTyMh72DrmNRsyzQfsBmxt8", "Amount" -> Quantity[100000000, "Mutez"], 
+     "Status" -> "Applied"]}]]
+```-SURIS*paclet:ref/BlockchainAddressData#662380603-S
+DeprecatedsFalse-S
+TokenCountjQA-SLocationfsListS@BlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ªSExamplesSOptionsSMaxItems-SGroupC-SHeaderIDiùºA-SIDi™Z6t-SStringSÊBlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ª > Examples > Options > MaxItems
+paclet:ref/BlockchainAddressData#1949719210
+
+List the last 10 transactions for an Ethereum address:
+
+```wl
+In[1]:= BlockchainAddressData["304a554a310C7e546dfe434669C62820b7D83490", "TransactionList", BlockchainBase -> "Ethereum", MaxItems -> 10]//Dataset
+
+Out[1]=
+Dataset[{Association["TransactionID" -> 
+    "c160ece04970394bacf395b8db3693b80c6cd393d7a6d0b2cb718cb32abaa623", "BlockNumber" -> 1896870, 
+   "Time" -> DateObject[{2016, 7, 16, 12, 52, 57.}, "Instant", "Gregorian", -5.], 
+   "Sender" -> "ac80CbA14C0 ...  -> 1879935, 
+   "Time" -> DateObject[{2016, 7, 13, 17, 9, 21.}, "Instant", "Gregorian", -5.], 
+   "Sender" -> "D1220A0cf47c7B9Be7A2E6BA89F429762e7b9aDb", 
+   "Receiver" -> "304a554a310C7e546dfe434669C62820b7D83490", "Amount" -> Quantity[0, "Wei"]]}]
+```-SURIS+paclet:ref/BlockchainAddressData#1949719210-S
+DeprecatedsFalse-S
+TokenCountjUA-SLocationfsListS@BlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ªSExamplesSApplications-SGroupC-SHeaderIDiΩ?d-SIDióÇz-SStringSûBlockchainAddressData ‚Åü‚ÅüVersions for specific blockchains ¬ª > Examples > Applications
+paclet:ref/BlockchainAddressData#2055378700
+
+Get the ``"ValueInUSDollars"`` property of a specific Ethereum address:
+
+```wl
+In[1]:= value = BlockchainAddressData["Ethereum" -> "b9ee1e551f538A464E8F8C41E9904498505B49b0", "ValueInUSDollars"]
+
+Out[1]= Quantity[564698.8862638026, "USDollars"]
+```
+
+Convert the amount to another currency:
+
+```wl
+In[2]:= CurrencyConvert[value, "PeruvianSoles"]
+
+Out[2]= Quantity[1.9066778153250578*^6, "PeruvianSoles"]
+```-SURIS+paclet:ref/BlockchainAddressData#2055378700-S
+DeprecatedsFalse-S
+TokenCountj¨ 
