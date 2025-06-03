@@ -6,6 +6,8 @@ This work builds upon previous projects funded by:
 - Cardano Catalyst - Supporting foundational blockchain AI research
 - XRPL Grants - Enabling real-time blockchain data integration (Wave 6)
 
+The project leverages the [WAEXLink paclet](https://resources.wolframcloud.com/PacletRepository/resources/KirillBelov/WAEXLink) for Wolfram Language integration with blockchain data services.
+
 API access for this project is provided through [EchoFeed](waexservices.com), offering comprehensive blockchain data.
 
 ## Features
