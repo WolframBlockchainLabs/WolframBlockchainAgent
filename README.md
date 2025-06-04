@@ -29,32 +29,7 @@ A **Retrieval‑Augmented Generation (RAG)** reference implementation built with
 
 ## 🏗️ Architecture
 
-```text  
-                 ┌───────────────────────────────┐  
-                 │  Document Inference Block      │  
-                 │  (embeds docs only)           │  
-                 └──────────────┬────────────────┘  
-                                │  
-                        Document Vectors  
-                                │  
-                 ┌───────────────────────────────┐  
-                 │  Vector DB (USearch)          │  
-                 └─┬─────────────────────────────┘  
-                   │ similarity  
-User Query ──▶┐    │ lookup     top‑k doc ids  
-              ▼    ▼  
-     ┌───────────────────────────────┐  
-     │  Query Inference Block        │  
-     │  (embeds queries)             │  
-     └──────────────┬────────────────┘  
-                    │  
-         ┌──────────▼─────────┐  
-         │   Re‑ranking Block │◀── optional (LLM)  
-         └──────────┬─────────┘  
-                    │ top‑n pairs  
-                    ▼  
-            Answer Generation (LLM+WL)  
-```
+![alt text](retrieve_rerank_pipeline.png)
 
 > **Note** A high‑resolution PNG of the full diagram is located at `docs/rag_pipeline.png` and rendered automatically on GitHub.
 
@@ -126,54 +101,6 @@ snippets = Import /@ FileNames["*.md", "docs/snippets"];
 indx = CreateSemanticSearchIndex[snippets];  
 ```
 
----
-
-## 🗂️ Repository Layout
-
-```  
-├── docs/  
-│   ├── rag_pipeline.png           # architecture diagram (update as needed)  
-│   └── snippets/                  # Markdown chunks for the vector DB  
-├── notebooks/  
-│   └── RAG‑Demo.nb               # end‑to‑end walkthrough  
-├── src/  
-│   ├── RagPipeline.wl            # core WL implementation  
-│   └── tools/                    # wrapper functions for LLM calls  
-├── tests/  
-│   └── test_pipeline.wlt         # minimal unit tests  
-└── README.md  
-```
-
----
-
-## 🛠️ Extending the Pipeline
-
-* **Add new corpora** – drop additional Markdown or plain‑text files into `docs/snippets/` and rerun `CreateSemanticSearchIndex`.  
-* **Swap embedding model** – pass `"FeatureExtractor" -> "Instructoru"` (or any built‑in model) when creating the index.  
-* **Custom reranker** – implement `myReranker[query_, docs_]` and supply it via `RerankingMethod -> myReranker`.  
-* **Tool integration** – expose extra Wolfram functions as *tools* so answers can execute them on‑the‑fly.
-
----
-
-## 🤝 Contributing
-
-Pull requests are welcome! If you have an idea for improving retrieval quality, supporting more blockchains or adding tests, feel free to open an issue first to discuss what you would like to change.
-
----
-
 ## 📄 License
 
 Distributed under the MIT License. See `LICENSE` for more information.
-
----
-
-## 🙏 Acknowledgements
-
-* Built with Wolfram Language 13.3, Semantic Search paclets and OpenAI GPT‑4.  
-* Diagram inspired by *RAG Tri‑Block* architecture.  
-* Portions of documentation © Wolfram Research.  
-
-
-
-
-![alt text](retrieve_rerank_pipeline.png)
